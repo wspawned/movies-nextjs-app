@@ -1,3 +1,29 @@
+# Notes
+
+## Client-Side Navigation
+
+You create routes as files under pages and use the built-in Link component. No routing libraries are required.
+
+The Link component enables client-side navigation between two pages in the same Next.js app.<br>
+Client-side navigation means that the page transition happens using JavaScript, which is faster than the default navigation done by the browser. Browser does not load the full page and client-side navigation is working.
+
+## Code splitting and prefetching
+
+Next.js does code splitting automatically, so each page only loads what’s necessary for that page. That means when the homepage is rendered, the code for other pages is not served initially.
+
+Furthermore, in a production build of Next.js, whenever Link components appear in the browser’s viewport, Next.js automatically prefetches the code for the linked page in the background.
+
+If you need to add attributes like, for example, className, add it to the a tag, not to the Link tag.
+```
+<Link href="/">
+  <a className="foo" target="_blank" rel="noopener noreferrer">
+    Hello World
+  </a>
+</Link>
+```
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
