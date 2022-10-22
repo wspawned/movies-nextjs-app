@@ -7,7 +7,7 @@ You create routes as files under pages and use the built-in Link component. No r
 The Link component enables client-side navigation between two pages in the same Next.js app.<br>
 Client-side navigation means that the page transition happens using JavaScript, which is faster than the default navigation done by the browser. Browser does not load the full page and client-side navigation is working.
 
-## Code splitting and prefetching
+## Code Splitting and Prefetching
 
 Next.js does code splitting automatically, so each page only loads what’s necessary for that page. That means when the homepage is rendered, the code for other pages is not served initially.
 
@@ -22,7 +22,34 @@ If you need to add attributes like, for example, className, add it to the a tag,
 </Link>
 ```
 
+## Assets, Metadata, and CSS
 
+If you want to customize the &lt;html&gt; tag, for example to add the lang attribute, you can do so by creating a pages/_document.js file.
+
+CSS Modules, automatically generates unique class names. For using it, you have to open CSS file under component that name is like blabla.module.css. And the style can be used after importing in component and defined inside className.
+
+```
+import styles from './layout.module.css';
+
+export default function Layout({ children }) {
+  return <div className={styles.container}>{children}</div>;
+}
+```
+
+In Next.js, you can add global CSS files by importing them from pages/_app.js. You cannot import global CSS anywhere else.
+
+## Styling Tips
+
+https://nextjs.org/learn/basics/assets-metadata-css/styling-tips
+
+
+
+
+
+
+
+
+# Default
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
