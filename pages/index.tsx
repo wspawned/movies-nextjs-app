@@ -2,12 +2,18 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
+import { getSortedPostsData } from '../lib/posts';
 
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import Link from 'next/link'
+export async function getStaticProps() {
+  const allPostsData = getSortedPostsData();
+  return {
+    props: {
+      allPostsData,
+    },
+  };
+}
 
-const Home: NextPage = () => {
+const Home: NextPage = ({allPostsData}) => {
   return (
     <Layout home>
       <Head>
@@ -18,11 +24,30 @@ const Home: NextPage = () => {
           To see my deployed projects, here is my <a href="https://github.com/wspawned">GitHub</a>.
           <br/> JS | TS | React | Next.js | React | CSS | HTML | Redux | Axios </p>
       </section>
+      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        <h2 className={utilStyles.headingLg}>Blog</h2>
+        <ul className={utilStyles.list}>
+          {allPostsData.map(({ id, date, title }) => (
+            <li className={utilStyles.listItem} key={id}>
+              {title}
+              <br />
+              {id}
+              <br />
+              {date}
+            </li>
+          ))}
+        </ul>
+      </section>
     </Layout>
   );
 }
 
 export default Home
+
+
+// import Image from 'next/image'
+// import styles from '../styles/Home.module.css'
+// import Link from 'next/link'
 
 // const Home: NextPage = () => {
 //   return (

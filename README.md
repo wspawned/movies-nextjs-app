@@ -42,10 +42,52 @@ In Next.js, you can add global CSS files by importing them from pages/_app.js. Y
 
 https://nextjs.org/learn/basics/assets-metadata-css/styling-tips
 
+## Pre-rendering and Data Fetching
+
+Next.js pre-renders every page. This means that Next.js generates HTML for each page in advance, instead of having it all done by client-side JavaScript. Pre-rendering can result in better performance and SEO.
+
+Next.js pre-renders the app into static HTML, allowing you to see the app UI without running JavaScript. Therefore, you would see the same page when disabled JS on browser.
+
+## Two Forms of Pre-rendering
+
+- Static Generation is the pre-rendering method that generates the HTML at build time. The pre-rendered HTML is then reused on each request.
+- Server-side Rendering is the pre-rendering method that generates the HTML on each request.
+
+```
+Note: In development mode, getStaticProps runs on each request instead.
+```
+
+```
+You might have noticed that each markdown file has a metadata section at the top containing title and date. This is called YAML Front Matter, which can be parsed using a library called gray-matter.
+```
+
+In Next.js, the lib folder does not have an assigned name like the pages folder, so you can name it anything. It's usually convention to use lib or utils.
+
+## Using Static Generation (getStaticProps())
+
+https://nextjs.org/learn/basics/data-fetching/getstaticprops-details
+
+To use Server-side Rendering, you need to export getServerSideProps instead of getStaticProps from your page.
+
+## Client-side Rendering
+
+If you do not need to pre-render the data, you can also use the following strategy (called Client-side Rendering):
+
+- Statically generate (pre-render) parts of the page that do not require external data.
+- When the page loads, fetch external data from the client using JavaScript and populate the remaining parts.
+
+This approach works well for user dashboard pages, for example.
+
+## SWR
+
+Next.js has created a React hook for data fetching called SWR. We highly recommend it if you’re fetching data on the client side. It handles caching, revalidation, focus tracking, refetching on interval, etc.
 
 
 
 
+
+# HANDLE posts.js LATER AND tsconfig.json (include part) TURN IT TO TS. 
+Layout home olayı da biraz muallak boolean ama neye göre
 
 
 
