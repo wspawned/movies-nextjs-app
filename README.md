@@ -83,12 +83,57 @@ This approach works well for user dashboard pages, for example.
 Next.js has created a React hook for data fetching called SWR. We highly recommend it if you’re fetching data on the client side. It handles caching, revalidation, focus tracking, refetching on interval, etc.
 
 
+## Dynamic Routes
+
+In pages/posts/[id].js, we’ll write code that will render a post page
+
+```
+import Layout from '../../components/layout';
+
+export default function Post() {
+  return <Layout>...</Layout>;
+}
+
+export async function getStaticPaths() {
+  // Return a list of possible value for id
+}
+
+export async function getStaticProps({ params }) {
+  // Fetch necessary data for the blog post using params.id
+}
+```
+getAllPostIds function must return an array of objects. Each object must have the params key and contain an object with the id key. Returns an array that looks like this:
+
+```
+[
+  {
+    params: {
+      id: 'ssg-ssr'
+    }
+  },
+  {
+    params: {
+      id: 'pre-rendering'
+    }
+  }
+]
+```
+
+https://nextjs.org/learn/basics/dynamic-routes/dynamic-routes-details
+
+## API Routes
+
 
 
 
 # HANDLE posts.js LATER AND tsconfig.json (include part) TURN IT TO TS. 
 Layout home olayı da biraz muallak boolean ama neye göre
 
+# Libraries
+
+- gray-matter
+- remark, remark-html
+- date-fns
 
 
 # Default
