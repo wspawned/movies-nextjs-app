@@ -1,3 +1,5 @@
+[Deployed project link](https://nextjs-tutorial-orpin.vercel.app/)
+
 # Notes
 
 ## Client-Side Navigation
